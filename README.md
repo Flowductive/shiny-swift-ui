@@ -1,2 +1,3 @@
 # ShinySwiftUI
- Extensions to make SwiftUI a little better!
+
+A description of this package.
