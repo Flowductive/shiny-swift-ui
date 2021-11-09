@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-@available(macOS 10.15, iOS 13.0, *)
+@available(macOS 11.0, iOS 13.0, *)
 public extension Text {
   
   // MARK: - Public Static Methods

@@ -87,6 +87,17 @@ public extension View {
   }
   
   /**
+   Sets the opacity of the view.
+   
+   - parameter level: The opacity level
+   - returns: The view, with the specified opacity level
+   */
+  @ViewBuilder
+  func opacity(_ level: _OpacityLevel) -> some View {
+    self.opacity(level.rawValue)
+  }
+  
+  /**
    Allows the view to be refreshable.
    
    - parameter val: A value that, when updated, refreshes the view
@@ -168,6 +179,26 @@ public extension View {
     } else {
       self
     }
+  }
+  
+  // MARK: - Enumerations
+  
+  public enum _OpacityLevel: CGFloat {
+    
+    /// Fully opaque.
+    case opaque = 1.0
+    
+    /// Mostly opaque.
+    case most = 0.75
+    
+    /// Half opaque.
+    case half = 0.5
+    
+    /// Quarter opaque.
+    case quarter = 0.25
+    
+    /// Invisible.
+    case invisible = 0.0
   }
 }
 
