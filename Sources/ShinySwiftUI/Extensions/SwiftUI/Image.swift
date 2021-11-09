@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-@available(macOS 11.0, *)
+@available(macOS 11.0, iOS 13.0, *)
 public extension Image {
   
   // MARK: - Public Methods

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-@available(macOS 10.15, *)
+@available(macOS 10.15, iOS 13.0, *)
 extension Color: _ExpressibleByColorLiteral {
   
   // MARK: - Public Initializers

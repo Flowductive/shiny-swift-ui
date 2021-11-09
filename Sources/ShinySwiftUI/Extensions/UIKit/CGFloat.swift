@@ -5,7 +5,7 @@
 //  Created by Ben Myers on 11/7/21.
 //
 
-import Foundation
+import SwiftUI
 
 public extension CGFloat {
   

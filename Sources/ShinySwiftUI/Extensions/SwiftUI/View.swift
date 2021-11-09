@@ -10,7 +10,7 @@ import SwiftUI
 infix operator /-
 infix operator /--
 
-@available(macOS 10.15, *)
+@available(macOS 10.15, iOS 13.0, *)
 public extension View {
   
   // MARK: - Public Static Methods
@@ -174,6 +174,7 @@ public extension View {
 #if os(iOS)
 import UIKit
 
+@available(iOS 13.0, *)
 public extension View {
   
   // MARK: - Public Methods
@@ -181,7 +182,6 @@ public extension View {
   /**
    Hides the keyboard, if shown.
    */
-  @available(iOS 10.0, *)
   func hideKeyboard() {
     UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
   }
