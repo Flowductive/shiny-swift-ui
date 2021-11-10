@@ -48,8 +48,8 @@ public extension View {
   /**
    Sets the frame to be a square size.
    
-   - parameter length: The side length of the frame
-   - returns: The view, with a square frame
+   - parameter length: The side length of the frame.
+   - returns: The view, with a square frame.
    */
   @ViewBuilder
   func frame(_ length: CGFloat) -> some View {
@@ -59,7 +59,7 @@ public extension View {
   /**
    Sets the max witdth to infinity, stretching the view horizontally.
    
-   - returns: The view, with a max width of infinity
+   - returns: The view, with a max width of infinity.
    */
   @ViewBuilder
   func stretchH() -> some View {
@@ -67,9 +67,9 @@ public extension View {
   }
   
   /**
-   Sets the max height to infinity, stretching the view vertically.
+   Sets the max height to infinity, stretching the view vertically..
    
-   - returns: The view, with a max height of infinity
+   - returns: The view, with a max height of infinity.
    */
   @ViewBuilder
   func stretchV() -> some View {
@@ -77,9 +77,9 @@ public extension View {
   }
   
   /**
-   Sets the max width and height to infinity, stretching the view both horizontally and vertically.
+   Sets the max width and height to infinity, stretching the view both horizontally and vertically..
    
-   - returns: The view, with a max width+height of infinity
+   - returns: The view, with a max width+height of infinity.
    */
   @ViewBuilder
   func stretch() -> some View {
@@ -89,8 +89,8 @@ public extension View {
   /**
    Sets the opacity of the view.
    
-   - parameter level: The opacity level
-   - returns: The view, with the specified opacity level
+   - parameter level: The opacity level.
+   - returns: The view, with the specified opacity level.
    */
   @ViewBuilder
   func opacity(_ level: _OpacityLevel) -> some View {
@@ -100,8 +100,8 @@ public extension View {
   /**
    Allows the view to be refreshable.
    
-   - parameter val: A value that, when updated, refreshes the view
-   - returns: The refreshable view
+   - parameter val: A value that, when updated, refreshes the view.
+   - returns: The refreshable view.
    */
   @ViewBuilder
   func refreshable(with val: Bool) -> some View {
@@ -111,10 +111,10 @@ public extension View {
   /**
    Adds a rounded border to the view.
    
-   - parameter color: The color of the rounded border
-   - parameter cornerRadius: The radius of the border
-   - parameter lineWidth: The thickness of the border
-   - returns: The view, with a rounded border
+   - parameter color: The color of the rounded border.
+   - parameter cornerRadius: The radius of the border.
+   - parameter lineWidth: The thickness of the border.
+   - returns: The view, with a rounded border.
    */
   @ViewBuilder
   func roundedBorder(_ color: Color, cornerRadius: CGFloat, lineWidth: CGFloat = 1.0) -> some View {
@@ -127,11 +127,11 @@ public extension View {
   /**
    Adds a dashed border around the view.
    
-   - parameter color: The color of the rounded border
-   - parameter cornerRadius: The radius of the border
-   - parameter lineWidth: The thickness of the border
-   - parameter dashLength: The length of each dash
-   - returns: The view, with a dashed border
+   - parameter color: The color of the rounded border.
+   - parameter cornerRadius: The radius of the border.
+   - parameter lineWidth: The thickness of the border.
+   - parameter dashLength: The length of each dash.
+   - returns: The view, with a dashed border.
    */
   @ViewBuilder
   func dashedBorder(_ color: Color, cornerRadius: CGFloat, lineWidth: CGFloat = 1.0, dashLength: CGFloat = 6.5) -> some View {
@@ -145,7 +145,7 @@ public extension View {
   /**
    Gives the view a slick-looking animation. Disables animation if `Local.shared.reducedMotion` is `true`.
    
-   - returns: An animated view
+   - returns: An animated view.
    */
   @ViewBuilder
   func slickAnimation() -> some View {
@@ -155,8 +155,8 @@ public extension View {
   /**
    Gives the view a slick-looking animation. Disables animation if `Local.shared.reducedMotion` is `true`.
    
-   - parameter value: The optional value to compare for animation
-   - returns: An animated view
+   - parameter value: The optional value to compare for animation.
+   - returns: An animated view.
    */
   @ViewBuilder
   func slickAnimation<T>(value: T) -> some View where T: Equatable {
@@ -166,8 +166,8 @@ public extension View {
   /**
    A conditional view modifier.
    
-   - parameter condition: The condition that must be true in order to apply a modifier
-   - parameter transform: A closure that passes a view and applies view modifiers to it
+   - parameter condition: The condition that must be true in order to apply a modifier.
+   - parameter transform: A closure that passes a view and applies view modifiers to it.
    */
   @ViewBuilder
   func `if`<Transform: View>(
@@ -181,24 +181,34 @@ public extension View {
     }
   }
   
-  // MARK: - Enumerations
+  /**
+   A view with a disable effect that dims and shrinks the view.
+   
+   - parameter flag: Whether the effect should be applied.
+   - returns: A view with a disable effect.
+   */
+  @ViewBuilder
+  func disableEffect(_ flag: Bool) -> some View {
+    self
+      .opacity(flag ? .half : .opaque)
+      .scaleEffect(flag ? 0.7 : 1.0)
+  }
   
-  public enum _OpacityLevel: CGFloat {
-    
-    /// Fully opaque.
-    case opaque = 1.0
-    
-    /// Mostly opaque.
-    case most = 0.75
-    
-    /// Half opaque.
-    case half = 0.5
-    
-    /// Quarter opaque.
-    case quarter = 0.25
-    
-    /// Invisible.
-    case invisible = 0.0
+  /**
+   A view with a load effect that dims and shrinks the view, displaying a loading indicator.
+   
+   - parameter flag: Whether the effect should be applied. `flag = true` will hide the loading indicator.
+   - returns: A view with a disable effect.
+   */
+  @ViewBuilder
+  func loadEffect<T>(_ flag: Bool, loadingView: T) -> some View where T: View {
+    ZStack {
+      self
+        .disableEffect(flag)
+      if flag {
+        loadingView
+      }
+    }
   }
 }
 
@@ -220,7 +230,7 @@ public extension View {
   /**
    Renders the view as a `UIImage`.
    
-   - returns: A rendered view as a `UIImage`
+   - returns: A rendered view as a `UIImage`.
    */
   func snapshot() -> UIImage {
     let controller = UIHostingController(rootView: self)
@@ -238,3 +248,21 @@ public extension View {
   }
 }
 #endif
+
+public enum _OpacityLevel: CGFloat {
+  
+  /// Fully opaque.
+  case opaque = 1.0
+  
+  /// Mostly opaque.
+  case most = 0.75
+  
+  /// Half opaque.
+  case half = 0.5
+  
+  /// Quarter opaque.
+  case quarter = 0.25
+  
+  /// Invisible.
+  case invisible = 0.0
+}
