@@ -191,7 +191,7 @@ public extension View {
   func disableEffect(_ flag: Bool) -> some View {
     self
       .opacity(flag ? .half : .opaque)
-      .scaleEffect(flag ? 0.7 : 1.0)
+      .scaleEffect(flag ? 0.99 : 1.0)
   }
   
   /**
@@ -201,12 +201,12 @@ public extension View {
    - returns: A view with a disable effect.
    */
   @ViewBuilder
-  func loadEffect<T>(_ flag: Bool, loadingView: T) -> some View where T: View {
+  func loadEffect<T>(_ flag: Bool, loadingView: () -> T) -> some View where T: View {
     ZStack {
       self
         .disableEffect(flag)
       if flag {
-        loadingView
+        loadingView()
       }
     }
   }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-@available(macOS 10.15, iOS 11.0, *)
+@available(macOS 10.15, iOS 13.0, *)
 public extension Divider {
   
   // MARK: - Public Static Methods
