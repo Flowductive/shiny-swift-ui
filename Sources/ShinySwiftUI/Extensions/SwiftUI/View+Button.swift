@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-@available(macOS 11.0, iOS 13.0, *)
+@available(macOS 11.0, iOS 14.0, *)
 public extension View {
   
   // MARK: - Public Methods
@@ -38,7 +38,7 @@ public extension View {
     if str == " " {
       str = "Space"
     }
-    if #available(macOS 12.0, *) {
+    if #available(macOS 12.0, iOS 15.0, *) {
       if shortcut == .defaultAction {
         symbols.append("return")
         str = "Enter"
@@ -62,7 +62,7 @@ public extension View {
   }
 }
 
-@available(macOS 11.0, iOS 13.0, *)
+@available(macOS 11.0, iOS 13.4, *)
 private struct HoverView<T>: View where T: View {
   
   @State var hover: Bool = false
@@ -84,11 +84,19 @@ private struct HoverView<T>: View where T: View {
       .imageScale(.small)
       .padding(.xs)
       .padding(.horizontal, .xs)
-      .background(VisualEffectView(material: .toolTip))
+      .background(background)
       .roundedBorder(Color.primary.opacity(0.2), cornerRadius: .s)
       .opacity(hover ? .opaque : .invisible)
       .offset(y: hover ? -35.0 : -25.0)
       .slickAnimation(value: hover)
     }
+  }
+  
+  var background: some View {
+    #if os(macOS)
+    return VisualEffectView(material: .toolTip)
+    #else
+    return VisualEffectView()
+    #endif
   }
 }

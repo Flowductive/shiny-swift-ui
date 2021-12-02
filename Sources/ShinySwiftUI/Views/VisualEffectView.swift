@@ -58,7 +58,7 @@ public struct VisualEffectView: UIViewRepresentable {
   
   // MARK: - Initalizers
   
-  public init(effect: UIVisualEffect?) {
+  public init(effect: UIVisualEffect? = nil) {
     self.effect = effect
   }
   
