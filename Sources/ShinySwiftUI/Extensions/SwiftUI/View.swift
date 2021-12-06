@@ -248,21 +248,3 @@ public extension View {
   }
 }
 #endif
-
-public enum _OpacityLevel: CGFloat {
-  
-  /// Fully opaque.
-  case opaque = 1.0
-  
-  /// Mostly opaque.
-  case most = 0.75
-  
-  /// Half opaque.
-  case half = 0.5
-  
-  /// Quarter opaque.
-  case quarter = 0.25
-  
-  /// Invisible.
-  case invisible = 0.0
-}
