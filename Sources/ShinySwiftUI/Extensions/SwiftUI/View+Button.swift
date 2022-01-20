@@ -85,6 +85,7 @@ private struct HoverView<T>: View where T: View {
       .padding(.xs)
       .padding(.horizontal, .xs)
       .background(background)
+      .cornerRadius(.s)
       .roundedBorder(Color.primary.opacity(0.2), cornerRadius: .s)
       .opacity(hover ? .opaque : .invisible)
       .offset(y: hover ? -35.0 : -25.0)
