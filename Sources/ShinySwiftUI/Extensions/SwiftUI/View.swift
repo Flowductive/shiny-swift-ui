@@ -210,6 +210,32 @@ public extension View {
       }
     }
   }
+  
+  /**
+   Overlays a new view on top of the view, ignoring the existing view's bounds.
+   
+   - parameter overlay: The overlay content.
+   */
+  @ViewBuilder
+  func boundlessOverlay<T>(_ overlay: () -> T) -> some View where T: View {
+    ZStack {
+      self
+      overlay()
+    }
+  }
+  
+  /**
+   Underlays a new view below the view, ignoring the existing view's bounds.
+   
+   - parameter underlay: The overlay content.
+   */
+  @ViewBuilder
+  func boundlessUnderlay<T>(_ underlay: () -> T) -> some View where T: View {
+    ZStack {
+      underlay()
+      self
+    }
+  }
 }
 
 #if os(iOS)
