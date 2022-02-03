@@ -15,7 +15,7 @@ import WatchKit
 import AppKit
 #endif
 
-@available(macOS 11.0, *)
+@available(iOS 14.0, macOS 11.0, *)
 extension Color: Codable {
   
   // MARK: - Inheritance
@@ -46,8 +46,7 @@ extension Color: Codable {
   }
 }
 
-
-@available(macOS 11.0, *)
+@available(iOS 14.0, macOS 11.0, *)
 fileprivate extension Color {
 #if os(macOS)
   typealias SystemColor = NSColor
