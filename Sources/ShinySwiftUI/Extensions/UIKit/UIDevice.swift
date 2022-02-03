@@ -5,6 +5,7 @@
 //  Created by Ben Myers on 2/3/22.
 //
 
+#if os(iOS)
 import UIKit
 
 public extension UIDevice {
@@ -20,3 +21,5 @@ public extension UIDevice {
       }
   }
 }
+
+#endif
