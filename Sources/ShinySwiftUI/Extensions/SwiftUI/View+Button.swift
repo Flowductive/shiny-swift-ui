@@ -42,6 +42,9 @@ public extension View {
       if shortcut == .defaultAction {
         symbols.append("return")
         str = "Enter"
+      } else if shortcut == .cancelAction {
+        symbols.append("escape")
+        str = "Esc"
       }
     }
     return HoverView(button: self.keyboardShortcut(shortcut), string: str, symbols: symbols)
