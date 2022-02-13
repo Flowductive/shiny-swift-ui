@@ -6,6 +6,8 @@
 //  Credit: https://swiftui-lab.com/a-powerful-combo/
 //
 
+#if os(macOS)
+
 import SwiftUI
 
 public extension View {
@@ -76,3 +78,5 @@ fileprivate class TrackingNSHostingView<Content>: NSHostingView<Content> where C
     self.onMove(self.convert(event.locationInWindow, from: nil))
   }
 }
+
+#endif
