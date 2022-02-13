@@ -40,6 +40,22 @@ public extension AnyTransition {
   static var swipe: AnyTransition {
     AnyTransition.asymmetric(insertion: swipeRight, removal: swipeLeft)
   }
+  
+  /// A pop transition.
+  static var pop: AnyTransition {
+    AnyTransition.asymmetric(insertion: .identity, removal: .modifier(active: PopViewModifier(active: true), identity: PopViewModifier(active: false)))
+  }
+}
+
+fileprivate struct PopViewModifier: ViewModifier {
+  
+  var active: Bool
+  
+  func body(content: Content) -> some View {
+    content
+      .opacity(active ? .invisible : .opaque)
+      .scaleEffect(active ? 1.2 : 0.0)
+  }
 }
 
 fileprivate struct SwipeViewModifier: ViewModifier {
@@ -54,8 +70,8 @@ fileprivate struct SwipeViewModifier: ViewModifier {
   
   func body(content: Content) -> some View {
     content
-      .opacity(active ? .invisible : .opaque)
       .offset(x: active ? direction == .right ? 200.0 : -200.0 : 0.0)
+      .opacity(active ? .invisible : .opaque)
   }
   
   enum Direction {

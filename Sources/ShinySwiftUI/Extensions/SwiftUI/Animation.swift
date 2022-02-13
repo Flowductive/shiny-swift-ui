@@ -36,6 +36,11 @@ public extension Animation {
     return Animation.spring(response: 0.8, dampingFraction: 0.7, blendDuration: 1.0)
   }
   
+  /// A basic animation intended for iOS page animations. See ``AnyTransition``.
+  static var page: Animation {
+    return Animation.easeInOut(duration: 0.2)
+  }
+  
   // MARK: - Public Static Methods
   
   /**

@@ -164,6 +164,18 @@ public extension View {
   }
   
   /**
+   Equips the view with a page transition, but only if the platform is iOS.
+   */
+  @ViewBuilder
+  func pageTransition() -> some View {
+    #if os(iOS)
+    self.transition(.swipe)
+    #else
+    self
+    #endif
+  }
+  
+  /**
    A conditional view modifier.
    
    - parameter condition: The condition that must be true in order to apply a modifier.
