@@ -21,10 +21,48 @@ public extension AnyTransition {
     AnyTransition.modifier(active: TurnedViewModifier(.up, turn: true), identity: TurnedViewModifier(.up, turn: false))
   }
   
+  /// An animation that turns the view.
   static var turn: AnyTransition {
     AnyTransition.asymmetric(insertion: turnFromBottom, removal: turnFromTop)
   }
+  
+  /// A left swipe transition.
+  static var swipeLeft: AnyTransition {
+    AnyTransition.modifier(active: SwipeViewModifier(.left, active: true), identity: SwipeViewModifier(.left, active: false))
+  }
+  
+  /// A right swipe transition.
+  static var swipeRight: AnyTransition {
+    AnyTransition.modifier(active: SwipeViewModifier(.right, active: true), identity: SwipeViewModifier(.right, active: false))
+  }
+  
+  /// A page-wide transition for swiping.
+  static var swipe: AnyTransition {
+    AnyTransition.asymmetric(insertion: swipeRight, removal: swipeLeft)
+  }
 }
+
+fileprivate struct SwipeViewModifier: ViewModifier {
+  
+  var direction: Direction
+  var active: Bool
+  
+  init(_ direction: Direction, active: Bool) {
+    self.direction = direction
+    self.active = active
+  }
+  
+  func body(content: Content) -> some View {
+    content
+      .opacity(active ? .invisible : .opaque)
+      .offset(x: active ? direction == .right ? 200.0 : -200.0 : 0.0)
+  }
+  
+  enum Direction {
+    case left, right
+  }
+}
+
 
 fileprivate struct TurnedViewModifier: ViewModifier {
   
