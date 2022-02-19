@@ -47,7 +47,13 @@ public extension View {
         str = "Esc"
       }
     }
-    return HoverView(button: self.keyboardShortcut(shortcut), string: str, symbols: symbols)
+    return Group {
+      if UserDefaults.standard.bool(forKey: ShinySwiftUI.shortcutTooltipDefaultsKey) {
+        HoverView(button: self.keyboardShortcut(shortcut), string: str, symbols: symbols)
+      } else {
+        self.keyboardShortcut(shortcut)
+      }
+    }
   }
   
   /**
