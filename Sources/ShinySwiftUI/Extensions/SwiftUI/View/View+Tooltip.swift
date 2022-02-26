@@ -31,7 +31,6 @@ fileprivate struct TooltipView<Content, TooltipContent>: View where Content: Vie
   var hover: Binding<Bool>?
   var extraOffset: CGFloat = 0.0
   @State private var autoHover: Bool = false
-  @State private var contentHeight: CGFloat = 0.0
   
   var show: Bool {
     if let hover = hover {
@@ -42,27 +41,22 @@ fileprivate struct TooltipView<Content, TooltipContent>: View where Content: Vie
   }
   
   var body: some View {
-    GeometryReader { proxy in
-      content
-        .onAppear {
-          contentHeight = proxy.size.height
+    content
+      .onHover {
+        if hover == nil {
+          autoHover = $0
         }
-    }
-    .onHover {
-      if hover == nil {
-        autoHover = $0
       }
-    }
-    .overlay(
-      tooltipContent
-        .padding(.xs)
-        .background(background)
-        .cornerRadius(.s)
-        .roundedBorder(Color.primary.opacity(0.2), cornerRadius: .s)
-        .opacity(show ? .opaque : .invisible)
-        .offset(y: show ? -35.0 - extraOffset : -25.0)
-        .slickAnimation(value: show)
-    )
+      .overlay(
+        tooltipContent
+          .padding(.xs)
+          .background(background)
+          .cornerRadius(.s)
+          .roundedBorder(Color.primary.opacity(0.2), cornerRadius: .s)
+          .opacity(show ? .opaque : .invisible)
+          .offset(y: show ? -35.0 - extraOffset : -25.0)
+          .slickAnimation(value: show)
+      )
   }
   
   var background: some View {
