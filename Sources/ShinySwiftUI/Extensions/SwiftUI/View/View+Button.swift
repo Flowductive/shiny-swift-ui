@@ -71,7 +71,7 @@ public extension View {
   }
 }
 
-@available(macOS 11.0, iOS 13.0, *)
+@available(macOS 11.0, iOS 13.4, *)
 private struct HoverView<T>: View where T: View {
   
   @State var hover: Bool = false

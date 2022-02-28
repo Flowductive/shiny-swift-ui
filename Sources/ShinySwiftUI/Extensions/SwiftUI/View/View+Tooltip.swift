@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-@available(macOS 11.0, iOS 13.0, *)
+@available(macOS 11.0, iOS 13.4, *)
 public extension View {
   
   // MARK: - Public Methods
@@ -23,7 +23,7 @@ public extension View {
   }
 }
 
-@available(macOS 11.0, iOS 13.0, *)
+@available(macOS 11.0, iOS 13.4, *)
 fileprivate struct TooltipView<Content, TooltipContent>: View where Content: View, TooltipContent: View {
 
   @ViewBuilder var content: Content
