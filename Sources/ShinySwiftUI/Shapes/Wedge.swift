@@ -15,9 +15,9 @@ public struct Wedge: Shape {
   // MARK: - Properties
   
   /// The start angle of the wedge.
-  var startAngle: Angle
+  var startAngle: Double
   /// The end angle of the wedge.
-  var endAngle: Angle
+  var endAngle: Double
   /// Whether the wedge moves clockwise.
   var clockwise: Bool
   
@@ -29,21 +29,21 @@ public struct Wedge: Shape {
     path.move(to: .init(x: rect.midX, y: rect.midY))
     path.addArc(center: CGPoint(x: rect.midX, y: rect.midY),
                 radius: radius,
-                startAngle: startAngle,
-                endAngle: endAngle,
+                startAngle: .radians(startAngle),
+                endAngle: .radians(endAngle),
                 clockwise: clockwise)
     path.move(to: .init(x: rect.midX, y: rect.midY))
     return path
   }
   
-  var animatableData: Angle {
-      get { endAngle }
-      set { endAngle = newValue }
+  public var animatableData: Double {
+    get { endAngle }
+    set { endAngle = newValue }
   }
   
   // MARK: - Public Initalizers
   
-  public init(from startAngle: Angle = .zero, to endAngle: Angle, clockwise: Bool = true) {
+  public init(from startAngle: Double = 0.0, to endAngle: Double, clockwise: Bool = true) {
     self.startAngle = startAngle
     self.endAngle = endAngle
     self.clockwise = clockwise
