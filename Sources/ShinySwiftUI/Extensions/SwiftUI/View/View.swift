@@ -156,11 +156,12 @@ public extension View {
    Gives the view a slick-looking animation. Disables animation if `Local.shared.reducedMotion` is `true`.
    
    - parameter value: The optional value to compare for animation.
+   - parameter delay: The animation's delay.
    - returns: An animated view.
    */
   @ViewBuilder
-  func slickAnimation<T>(value: T) -> some View where T: Equatable {
-    self.animation(.slickEaseOut, value: value)
+  func slickAnimation<T>(value: T, delay: Double = 0.0) -> some View where T: Equatable {
+    self.animation(.slickEaseOut.delay(delay), value: value)
   }
   
   /**
