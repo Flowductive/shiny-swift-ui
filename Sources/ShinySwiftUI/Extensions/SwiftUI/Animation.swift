@@ -26,6 +26,16 @@ public extension Animation {
     Animation.timingCurve(0.75, 0.25, 0, 1, duration: 0.5)
   }
   
+  /// A ramp ease out animation.
+  static var rampEaseOut: Animation {
+    Animation.timingCurve(0.01, 0.99, 0, 1, duration: 1.0)
+  }
+  
+  /// A ramp ease in animation.
+  static var rampEaseIn: Animation {
+    Animation.timingCurve(0.99, 0.01, 0, 1, duration: 1.0)
+  }
+  
   /// A bounce animation.
   static var bounce: Animation {
     return Animation.spring(response: 1.0, dampingFraction: 0.4, blendDuration: 1.0)
