@@ -43,7 +43,7 @@ public extension AnyTransition {
   
   /// A pop transition.
   static var pop: AnyTransition {
-    AnyTransition.asymmetric(insertion: .identity, removal: .modifier(active: PopViewModifier(active: true), identity: PopViewModifier(active: false)))
+    AnyTransition.asymmetric(insertion: .scale, removal: .modifier(active: PopViewModifier(active: true), identity: PopViewModifier(active: false)))
   }
 }
 
@@ -54,7 +54,7 @@ fileprivate struct PopViewModifier: ViewModifier {
   func body(content: Content) -> some View {
     content
       .opacity(active ? .invisible : .opaque)
-      .scaleEffect(active ? 1.2 : 0.0)
+      .scaleEffect(active ? 1.5 : 1.0)
   }
 }
 
