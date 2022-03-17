@@ -45,16 +45,28 @@ public extension AnyTransition {
   static var pop: AnyTransition {
     AnyTransition.asymmetric(insertion: .scale, removal: .modifier(active: PopViewModifier(active: true), identity: PopViewModifier(active: false)))
   }
+  
+  // MARK: - Public Static Methods
+  
+  /**
+   A pop transition.
+   
+   - parameter scale: The scale to size the disappearing view.
+   */
+  static func pop(_ scale: CGFloat) -> AnyTransition {
+    AnyTransition.asymmetric(insertion: .scale, removal: .modifier(active: PopViewModifier(active: true, scale: scale), identity: PopViewModifier(active: false, scale: scale)))
+  }
 }
 
 fileprivate struct PopViewModifier: ViewModifier {
   
   var active: Bool
+  var scale: CGFloat = 1.5
   
   func body(content: Content) -> some View {
     content
       .opacity(active ? .invisible : .opaque)
-      .scaleEffect(active ? 1.5 : 1.0)
+      .scaleEffect(active ? scale : 1.0)
   }
 }
 
