@@ -19,7 +19,25 @@ public extension View {
    - parameter value: The `Binding` value to check. If it matches `index`, the highlight will display.
    */
   @ViewBuilder
-  func highlight(_ index: Int, monitoring value: Binding<Int>) -> some View {
-    self.roundedBorder(index == value.wrappedValue ? .accentColor : .clear, cornerRadius: .m, lineWidth: 4.0)
+  func highlight(_ index: Int, monitoring value: Binding<Int?>) -> some View {
+    self
+      .overlay(
+        RoundedRectangle(cornerRadius: .xs)
+          .stroke(.yellow.if(value == index), lineWidth: 2.0)
+      )
+      .slickAnimation(value: value.wrappedValue)
   }
+}
+
+fileprivate func == <T>(lhs: Binding<T>, rhs: T) -> Binding<Bool> where T: Equatable {
+  Binding(
+    get: {
+      lhs.wrappedValue == rhs
+    },
+    set: {
+      if $0 {
+        lhs.wrappedValue = rhs
+      }
+    }
+  )
 }
