@@ -82,8 +82,8 @@ fileprivate struct SwipeViewModifier: ViewModifier {
   
   func body(content: Content) -> some View {
     content
-      .offset(x: active ? direction == .right ? 200.0 : -200.0 : 0.0)
       .opacity(active ? .invisible : .opaque)
+      .offset(x: active ? direction == .right ? 200.0 : -200.0 : 0.0)
   }
   
   enum Direction {
