@@ -125,6 +125,23 @@ public extension View {
   }
   
   /**
+   Adds an inner rounded border to the view.
+   
+   - parameter color: The color of the rounded border.
+   - parameter cornerRadius: The radius of the border.
+   - parameter lineWidth: The thickness of the border.
+   - returns: The view, with a rounded border.
+   */
+  @ViewBuilder
+  func innerRoundedBorder(_ color: Color, cornerRadius: CGFloat, lineWidth: CGFloat = 1.0) -> some View {
+    self.overlay(
+      RoundedRectangle(cornerRadius: cornerRadius)
+        .stroke(color, lineWidth: lineWidth)
+        .padding(1.0)
+    )
+  }
+  
+  /**
    Adds a dashed border around the view.
    
    - parameter color: The color of the rounded border.
@@ -248,6 +265,14 @@ public extension View {
       underlay()
       self
     }
+  }
+  
+  /**
+   Sets a highlighted background for debugging purposes.
+   */
+  @ViewBuilder
+  func debug() -> some View {
+    background(Color.yellow.opacity(.quarter))
   }
 }
 
