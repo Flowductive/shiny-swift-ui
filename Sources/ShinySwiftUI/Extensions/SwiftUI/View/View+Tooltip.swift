@@ -52,7 +52,7 @@ fileprivate struct TooltipView<Content, TooltipContent>: View where Content: Vie
           .padding(.xs)
           .background(background)
           .cornerRadius(.s)
-          .roundedBorder(Color.primary.opacity(0.2), cornerRadius: .s)
+          .innerRoundedBorder(Color.primary.opacity(0.2), cornerRadius: .s)
           .opacity(show ? .opaque : .invisible)
           .offset(y: show ? -35.0 - extraOffset : -25.0)
           .slickAnimation(value: show)
