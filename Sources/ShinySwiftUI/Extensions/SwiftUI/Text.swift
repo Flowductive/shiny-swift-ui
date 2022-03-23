@@ -19,11 +19,6 @@ public extension Text {
    - parameter value: The value to animate.
    */
   func transition(_ t: AnyTransition, value: String) -> some View {
-    TextTransitionIDGenerator.count += 1
-    return self.transition(t).id("_t\(TextTransitionIDGenerator.count)\(value)")
+    return self.transition(t).id("_t\(value)")
   }
-}
-
-fileprivate struct TextTransitionIDGenerator {
-  static var count: Int = 0
 }

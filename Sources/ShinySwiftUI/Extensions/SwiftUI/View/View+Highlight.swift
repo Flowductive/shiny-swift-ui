@@ -41,7 +41,8 @@ fileprivate struct HighlightView<Content>: View where Content: View {
     content
       .overlay(
         RoundedRectangle(cornerRadius: .xs)
-          .stroke(.yellow.if(value == index), lineWidth: 2.0)
+          .stroke(value.wrappedValue == index ? .yellow : .clear, lineWidth: 2.0)
+          .animation(.none, value: value.wrappedValue)
       )
       .slickAnimation(value: value.wrappedValue)
       .onAppear { animate = true }
