@@ -194,6 +194,16 @@ public extension View {
   }
   
   /**
+   Employs a swipe-style transition, swiping left if the value is true and right otherwise.
+   
+   - parameter value: The value that is to be observed.
+   */
+  @ViewBuilder
+  func swipeTransition(on value: Bool) -> some View {
+    self.transition(value ? .swipeLeft : .swipeRight)
+  }
+  
+  /**
    A conditional view modifier.
    
    - parameter condition: The condition that must be true in order to apply a modifier.
