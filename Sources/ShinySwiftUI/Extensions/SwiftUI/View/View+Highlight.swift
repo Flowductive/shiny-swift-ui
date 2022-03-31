@@ -19,8 +19,8 @@ public extension View {
    - parameter value: The `Binding` value to check. If it matches `index`, the highlight will display.
    */
   @ViewBuilder
-  func highlight(_ index: Int, monitoring value: Binding<Int?>) -> some View {
-    HighlightView(content: { self }, index: index, value: value)
+  func highlight(_ index: Int, cornerRadius: CGFloat = .xs, monitoring value: Binding<Int?>) -> some View {
+    HighlightView(content: { self }, index: index, cornerRadius: cornerRadius, value: value)
   }
 }
 
@@ -31,6 +31,7 @@ fileprivate struct HighlightView<Content>: View where Content: View {
   @State var animate: Bool = false
   
   var index: Int
+  var cornerRadius: CGFloat
   var value: Binding<Int?>
   
   var show: Bool {
@@ -40,15 +41,15 @@ fileprivate struct HighlightView<Content>: View where Content: View {
   var body: some View {
     content
       .overlay(
-        RoundedRectangle(cornerRadius: .xs)
-          .stroke(value.wrappedValue == index ? .yellow : .clear, lineWidth: 2.0)
+        RoundedRectangle(cornerRadius: cornerRadius)
+          .stroke(value.wrappedValue == index ? .orange : .clear, lineWidth: 2.0)
           .animation(.none, value: value.wrappedValue)
       )
       .slickAnimation(value: value.wrappedValue)
       .onAppear { animate = true }
       .overlay(
         Image(systemName: "chevron.down")
-          .foregroundColor(.yellow.if(value == index))
+          .foregroundColor(.orange.if(value == index))
           .animation(.lightBounce.repeatForever(autoreverses: false), value: animate)
           .offset(y: animate ? 10.0 : 0.0)
           .offset(y: -50.0)
