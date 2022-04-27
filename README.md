@@ -28,7 +28,7 @@
 
 ## What is ShinySwiftUI?
 
-ShinySwiftUI aims to turn messy Swift + SwiftUI code into cleaner, more Swift-y code. It also aims to provide a library of useful modifiers, components, and extensions to create consistent, good-looking apps.
+ShinySwiftUI aims to turn messy Swift + SwiftUI code into cleaner, Swift-ier code. It also aims to provide a library of useful modifiers, components, and extensions to create consistent, good-looking apps.
 
 ```swift
 // 😴 Before
