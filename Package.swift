@@ -13,15 +13,12 @@ let package = Package(
             name: "ShinySwiftUI",
             targets: ["ShinySwiftUI"]),
     ],
-    dependencies: [
-      .package(url: "https://github.com/SwiftUIX/SwiftUIX", from: "0.1.0"),
-    ],
+    dependencies: [],
     targets: [
         .target(
             name: "ShinySwiftUI",
-            dependencies: [
-              .product(name: "SwiftUIX", package: "SwiftUIX")
-            ]),
+            dependencies: []
+        ),
         .testTarget(
             name: "ShinySwiftUITests",
             dependencies: ["ShinySwiftUI"]),
