@@ -8,13 +8,6 @@
 <p align="center">💨 Custom, built-in transitions, animations for views</p>
 <p align="center">💻 Cross-platform support on both iOS and macOS</p>
 
-
-
-
-
-
-
-
 ***
 
 ⚠️ **Note:** This package is still under development and its contents are freely subject to change.
@@ -72,27 +65,27 @@ MyView().roundedBorder(.red, cornerRadius: 5.0, lineWidth: 2.0)
 ## Completed Features
 
 - App Layout
-  - Pre-defined spacing values [→]
-  - Layout using Generic Stack
-  - Layout using Shove View
-  - Fixed-width spacers
+  - Pre-defined spacing values [→]()
+  - Layout using Generic Stack [→]()
+  - Layout using Shove View [→]()
+  - Fixed-width spacers [→]()
 - View Functionality
-  - Operations on views
-  - View frame modifiers
-  - View refresh modifier
-  - View styling modifiers
-  - Custom animation/transitions
-  - Debugging view modifier
-  - Screenshot view method
-  - Hover tooltip modifier (macOS)
-  - View mouse position checking (macOS)
+  - Operations on views [→]()
+  - View frame modifiers [→]()
+  - View refresh modifier [→]()
+  - View styling modifiers [→]()
+  - Custom animation/transitions [→]()
+  - Debugging view modifier [→]()
+  - Screenshot view method [→]()
+  - Hover tooltip modifier (macOS) [→]()
+  - View mouse position checking (macOS) [→]()
 - Other Features
-  - Image modifiers
-  - Color features
-  - Quick dividers
-  - Visual effects
-  - Pre-made buttons
-  - Action item highlight modifier
+  - Image modifiers [→]()
+  - Color features [→]()
+  - Quick dividers [→]()
+  - Visual effects [→]()
+  - Pre-made buttons [→]()
+  - Action item highlight modifier [→]()
 
 Most of the above features are **cross-platform** and are supported on both iOS and macOS.
 
@@ -103,3 +96,59 @@ Add **ShinySwiftUI** to your project using Swift Package Manager:
 ```
 https://github.com/Flowductive/shiny-swift-ui
 ```
+
+## 📐 App Layout Features
+
+### Pre-defined spacing values
+
+Improve code consistency with `CGFloat` spacing values:
+
+```swift
+MyView().padding(.m).cornerRadius(.xs)
+```
+
+These values include: `.xxs`, `.xs`, `.s`, `.m`, `.l`. `.xl`, and `.xxl`.
+
+### Layout using Generic Stack
+
+You can use a generic stack, or `GStack`, to position items vertically or horizontally using a `Bool` input:
+
+```swift
+GStack(platform == .iOS ? .vertical : .horizontal) {
+  MyViewA()
+  MyViewB()
+}
+```
+
+A typical use case of `GStack` is for changing display layout on macOS vs. iOS devices.
+
+### Layout using Shove View
+
+Use a `ShoveView` to quickly push inner content to one side/corner:
+
+```swift
+// Position MyView right
+ShoveView(.trailing) {
+  MyView()
+}
+
+// Position MyView top-left
+ShoveView(.topLeading) {
+  MyView()
+}
+```
+
+### Fixed-width spacers
+
+Use fixed-width spacers for consistent spacing:
+
+```swift
+// Large vertical spacer
+Spacer.VL
+
+// Extra-small vertical spacer
+Spacer.HXS
+```
+
+Vertical spacer variants include `.VXXS`, `.VXS`, `.VS`, `.VM`, `.VL`, `.VXL`, and `.VXXL`.
+Horizontal spacer variants include `.HXXS`, `.HXS`, `.HS`, `.HM`, `.HL`, `.HXL`, and `.HXXL`.
