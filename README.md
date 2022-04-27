@@ -19,6 +19,8 @@
 
 ⚠️ **Note:** This package is still under development and its contents are freely subject to change.
 
+💕 This package **works great with** and is inspired by [SwiftUIX](https://github.com/SwiftUIX/SwiftUIX)!
+
 🚧 **Wiki under construction.** Read below to get started!
 
 ![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/Flowductive/shiny-swift-ui?label=version)
