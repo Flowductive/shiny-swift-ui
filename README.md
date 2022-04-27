@@ -72,30 +72,34 @@ MyView().roundedBorder(.red, cornerRadius: 5.0, lineWidth: 2.0)
 ## Completed Features
 
 - App Layout
-  - Use pre-defined spacing values
+  - Pre-defined spacing values [→]
   - Layout using Generic Stack
-  - Layout using Shove Views
-  - Add fixed-width spacers
+  - Layout using Shove View
+  - Fixed-width spacers
 - View Functionality
-  - Use operations on views [→]
-  - Resize views using modifiers
-  - Easily refresh views
-  - Add style to views using modifiers
-  - Add animations/transitions using modifiers
-  - Debug views using modifiers
-  - Save a screenshot of a view
-  - Add hover tooltips to views (iOS)
-  - Check mouse position within a view (macOS)
+  - Operations on views
+  - View frame modifiers
+  - View refresh modifier
+  - View styling modifiers
+  - Custom animation/transitions
+  - Debugging view modifier
+  - Screenshot view method
+  - Hover tooltip modifier (macOS)
+  - View mouse position checking (macOS)
 - Other Features
-  - Quickly add dividers
-  - Use image modifiers
-  - Use color features
-  - Add visual effects
-  - Add pre-made buttons
-  - Highlight tutorial action items
+  - Image modifiers
+  - Color features
+  - Quick dividers
+  - Visual effects
+  - Pre-made buttons
+  - Action item highlight modifier
 
 Most of the above features are **cross-platform** and are supported on both iOS and macOS.
 
 ## Get Started
 
 Add **ShinySwiftUI** to your project using Swift Package Manager:
+
+```
+https://github.com/Flowductive/shiny-swift-ui
+```
