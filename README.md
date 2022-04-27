@@ -65,25 +65,25 @@ MyView().roundedBorder(.red, cornerRadius: 5.0, lineWidth: 2.0)
 ## Completed Features
 
 - App Layout
-  - Pre-defined spacing values [→]()
-  - Layout using Generic Stack [→]()
-  - Layout using Shove View [→]()
-  - Fixed-width spacers [→]()
+  - Pre-defined spacing values [→](https://github.com/Flowductive/shiny-swift-ui#pre-defined-spacing-values)
+  - Layout using Generic Stack [→](https://github.com/Flowductive/shiny-swift-ui#layout-using-generic-stack)
+  - Layout using Shove View [→](https://github.com/Flowductive/shiny-swift-ui#layout-using-shove-view)
+  - Fixed-width spacers [→](https://github.com/Flowductive/shiny-swift-ui#fixed-width-spacers)
 - View Functionality
-  - Operations on views [→]()
-  - View frame modifiers [→]()
-  - View refresh modifier [→]()
-  - View styling modifiers [→]()
-  - Custom animation/transitions [→]()
-  - Debugging view modifier [→]()
-  - Screenshot view method [→]()
-  - Hover tooltip modifier (macOS) [→]()
-  - View mouse position checking (macOS) [→]()
+  - Operations on views [→](https://github.com/Flowductive/shiny-swift-ui#operations-on-views)
+  - View frame modifiers [→](https://github.com/Flowductive/shiny-swift-ui#view-frame-modifiers)
+  - View refresh modifier [→](https://github.com/Flowductive/shiny-swift-ui#view-refresh-modifier)
+  - View styling modifiers [→](https://github.com/Flowductive/shiny-swift-ui#view-styling-modifiers)
+  - Custom animation/transitions [→](https://github.com/Flowductive/shiny-swift-ui#custom-animationtransitions)
+  - Debugging view modifier [→](https://github.com/Flowductive/shiny-swift-ui#debugging-view-modifier)
+  - Screenshot view method [→](https://github.com/Flowductive/shiny-swift-ui#screenshot-view-method)
+  - Hover tooltip modifier (macOS) [→](https://github.com/Flowductive/shiny-swift-ui#hover-tooltip-modifier-macos)
+  - View mouse position checking (macOS) [→](https://github.com/Flowductive/shiny-swift-ui#view-mouse-position-checking-macos)
 - Other Features
   - Image modifiers
-  - Color features [→]()
+  - Color features [→](https://github.com/Flowductive/shiny-swift-ui#color-features)
   - Quick dividers
-  - Visual effects [→]()
+  - Visual effects [→](https://github.com/Flowductive/shiny-swift-ui#visual-effects)
   - Pre-made buttons
   - Action item highlight modifier
 
