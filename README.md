@@ -80,12 +80,12 @@ MyView().roundedBorder(.red, cornerRadius: 5.0, lineWidth: 2.0)
   - Hover tooltip modifier (macOS) [→]()
   - View mouse position checking (macOS) [→]()
 - Other Features
-  - Image modifiers [→]()
+  - Image modifiers
   - Color features [→]()
-  - Quick dividers [→]()
+  - Quick dividers
   - Visual effects [→]()
-  - Pre-made buttons [→]()
-  - Action item highlight modifier [→]()
+  - Pre-made buttons
+  - Action item highlight modifier
 
 Most of the above features are **cross-platform** and are supported on both iOS and macOS.
 
@@ -152,3 +152,169 @@ Spacer.HXS
 
 Vertical spacer variants include `.VXXS`, `.VXS`, `.VS`, `.VM`, `.VL`, `.VXL`, and `.VXXL`.
 Horizontal spacer variants include `.HXXS`, `.HXS`, `.HS`, `.HM`, `.HL`, `.HXL`, and `.HXXL`.
+
+## ⚙️ View Functionality
+
+### Operations on views
+
+You can quickly group views using operators:
+
+```swift
+// Horizontal stack
+MyViewA() + MyViewB()
+
+// Vertical stack, center-aligned
+MyViewA() / MyViewB()
+
+// Vertical stack, left-aligned
+MyViewA() /- MyViewB();
+```
+
+### View frame modifiers
+
+Easily set the dimensions of a square frame:
+
+```swift
+// Sets MyView's frame to width = 30.0, height = 30.0
+MyView().frame(30.0)
+```
+
+Stretch the view:
+
+```swift
+// Stretch horizontally
+MyViewA().stretchH()
+
+// Stretch vertically
+MyViewB().stretchV()
+
+// Stretch in both directions
+MyViewC().stretch()
+```
+
+### View refresh modifier
+
+Use a `@State` boolean to refresh a view quickly:
+
+```swift
+@State var refresh: Bool = false
+
+var body {
+  MyView().refreshable(with: refresh)
+}
+```
+
+Updating the view would require that `refresh.toggle()` is called.
+
+### View styling modifiers
+
+Set the relative opacity of a view:
+
+```swift
+MyView().opacity(.half)
+```
+
+You can choose from (in order of opacity) `.opaque`, `.most`, `.half`, `.quarter`, `.almostInvisible`, `.invisible`.
+
+Add a rounded border to any view:
+
+```swift
+MyViewA().roundedBorder(.green)
+MyViewB().roundedBorder(.red, cornerRadius: .s, lineWidth: 2.0)
+```
+
+### Custom animation/transitions
+
+Add a slick transition to a view using `.slickAnimation(value:)`:
+
+```swift
+MyViewA().slickAnimation()
+MyViewB().slickAnimation(value: myVal)
+```
+
+Add a custom built-in animation; i.e. `.slickEaseOut`, `.slickEaseIn`, `.rampEaseOut`, `.rampEaseIn`, `.bounce`, `.lightBounce`, or `.page`:
+
+```swift
+MyViewA().animation(.rampEaseOut)
+MyViewB().animation(.slickEaseOut(duration: 1.0), value: myVal)
+```
+
+Add a custom built-in transition; i.e. `.turn`, `.swipe`, `.pop`:
+
+```swift
+MyViewA().transition(.turn)
+```
+
+### Debugging view modifier
+
+Use the `.debug()` view modifier to randomly change the background color of the view for debugging:
+
+```swift
+MyView().debug()
+```
+
+### Screenshot view method
+
+Take a screenshot of a view and save the image to path:
+
+```swift
+myView.snapshot()
+```
+
+### Hover tooltip modifier (macOS)
+
+Add a tooltip upon hover to a view:
+
+```swift
+MyView()
+.withTooltip(present: $showTooltip) {
+  Text("This is a tooltip!")
+}
+```
+
+Add a keyboard shortcut, which automatically adds the shortcut tooltip:
+
+```swift
+MyViewA().shortcut("c", modifiers: [.shift, .command])
+MyViewB().shortcut(.defaultAction)
+```
+
+### View mouse position checking (macOS)
+
+Track the relative position of the mouse pointer within the view:
+
+```swift
+MyView().trackingMouse { pos in
+  // ...
+}
+```
+
+## 🎁 Other Features
+
+### Color features
+
+Take advantage of color utilities:
+
+```swift
+// Init color from hex code
+var color = Color(hex: "#ffffff")
+
+// If bindingBool.wrappedValue is true, show the color
+MyView().foregroundColor(.red.if($bindingBool))
+
+// Get a lighter version of a color
+lighter = color.ligher(by: 0.3)
+
+// Colors also have relative opacities, just like views
+halfColor = color.opacity(.half)
+```
+
+When importing ShinySwiftUI, colors will also conform to `Codable`.
+
+### Visual effects
+
+Easily add SwiftUI wraps of `UIVisualEffectView`:
+
+```swift
+VisualEffectView()
+```
