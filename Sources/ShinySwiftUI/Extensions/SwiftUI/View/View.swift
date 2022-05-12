@@ -5,6 +5,7 @@
 //  Created by Ben Myers on 11/8/21.
 //
 
+import Foundation
 import SwiftUI
 
 infix operator /-
@@ -248,6 +249,30 @@ public extension View {
       if flag {
         loadingView()
       }
+    }
+  }
+  
+  /**
+   Performs an action repeatedly on interval.
+   
+   - parameter interval: The time between each action.
+   - parameter action: The action to perform.
+   */
+  func every(_ interval: TimeInterval, perform action: @escaping () -> Void) -> some View {
+    self.onReceive(Timer.publish(every: interval, on: .main, in: .common).autoconnect()) { _ in
+      action()
+    }
+  }
+  
+  /**
+   Performs an action after a specified interval.
+   
+   - parameter interval: The delay interval.
+   - parameter action: The action to perform.
+   */
+  func after(_ interval: TimeInterval, perform action: @escaping () -> Void) -> some View {
+    self.onAppear {
+      DispatchQueue.main.asyncAfter(deadline: .now() + interval, execute: action)
     }
   }
   
