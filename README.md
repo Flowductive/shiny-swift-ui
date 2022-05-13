@@ -21,6 +21,9 @@
 ![GitHub issues](https://img.shields.io/github/issues/Flowductive/shiny-swift-ui)
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/Flowductive/shiny-swift-ui)
 
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FFlowductive%2Feasy-firebase%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/Flowductive/shiny-swift-ui)
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FFlowductive%2Feasy-firebase%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/Flowductive/shiny-swift-ui)
+
 ## What is ShinySwiftUI?
 
 ShinySwiftUI aims to turn messy Swift + SwiftUI code into cleaner, Swift-ier code. It also aims to provide a library of useful modifiers, components, and extensions to create consistent, good-looking apps.
