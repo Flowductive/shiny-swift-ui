@@ -43,7 +43,7 @@ public extension Color {
   func darker(by amount: CGFloat = 0.2) -> Self { Self(_Color(self).darker(by: amount)) }
 }
 
-#if os(iOS)
+#if os(iOS) || os(watchOS)
 
 fileprivate typealias _Color = UIColor
 fileprivate extension UIColor {

@@ -8,6 +8,7 @@
 import SwiftUI
 
 @available(macOS 11.0, iOS 13.4, *)
+@available(watchOS, unavailable)
 public extension View {
   
   // MARK: - Public Methods
@@ -24,6 +25,7 @@ public extension View {
 }
 
 @available(macOS 11.0, iOS 13.4, *)
+@available(watchOS, unavailable)
 fileprivate struct TooltipView<Content, TooltipContent>: View where Content: View, TooltipContent: View {
 
   @ViewBuilder var content: Content
@@ -62,8 +64,10 @@ fileprivate struct TooltipView<Content, TooltipContent>: View where Content: Vie
   var background: some View {
     #if os(macOS)
     return VisualEffectView(material: .toolTip)
-    #else
+    #elseif os(iOS)
     return VisualEffectView()
+    #else
+    return EmptyView()
     #endif
   }
 }

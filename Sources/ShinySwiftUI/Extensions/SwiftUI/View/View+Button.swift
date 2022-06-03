@@ -8,6 +8,7 @@
 import SwiftUI
 
 @available(macOS 11.0, iOS 14.0, *)
+@available(watchOS, unavailable)
 public extension View {
   
   // MARK: - Public Methods
@@ -72,6 +73,7 @@ public extension View {
 }
 
 @available(macOS 11.0, iOS 13.4, *)
+@available(watchOS, unavailable)
 private struct HoverView<T>: View where T: View {
   
   @State var hover: Bool = false
@@ -105,8 +107,10 @@ private struct HoverView<T>: View where T: View {
   var background: some View {
     #if os(macOS)
     return VisualEffectView(material: .toolTip)
-    #else
+    #elseif os(iOS)
     return VisualEffectView()
+    #else
+    return EmptyView()
     #endif
   }
 }
