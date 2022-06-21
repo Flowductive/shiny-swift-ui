@@ -41,6 +41,11 @@ public extension AnyTransition {
     AnyTransition.asymmetric(insertion: swipeRight, removal: swipeLeft)
   }
   
+  /// A reversed page-wide transition for swiping.
+  static var swipeReversed: AnyTransition {
+    AnyTransition.asymmetric(insertion: swipeLeft, removal: swipeRight)
+  }
+  
   /// A pop transition.
   static var pop: AnyTransition {
     AnyTransition.asymmetric(insertion: .scale, removal: .modifier(active: PopViewModifier(active: true), identity: PopViewModifier(active: false)))
