@@ -184,11 +184,24 @@ public extension View {
   
   /**
    Equips the view with a page transition, but only if the platform is iOS.
+   
+   Use this modifier to create page-like transitions between two displayed views, using only a single `Bool` value.
+   
+   For instance, if you have three pages in succession: `.page1`, `.page2`, `.page3`, assigned to raw ordering values `1`, `2`, `3`, respectively,
+   then
+   
+   ```
+   MyView().pageTransition(isTrailing: currentPage.rawValue >= oldPage.rawValue)
+   ```
+   
+   will make the view swipe in the correct direction whether the user is navigating in or out.
+   
+   - parameter isTrailing: Whether the view is swiping left or right.
    */
   @ViewBuilder
-  func pageTransition() -> some View {
+  func pageTransition(isTrailing: Bool) -> some View {
     #if os(iOS)
-    self.transition(.swipe)
+    self.transition(isTrailing ? .swipe : .swipeReversed)
     #else
     self
     #endif
