@@ -199,7 +199,7 @@ public extension View {
    - parameter isTrailing: Whether the view is swiping left or right.
    */
   @ViewBuilder
-  func pageTransition(isTrailing: Bool) -> some View {
+  func pageTransition(isTrailing: Bool = true) -> some View {
     #if os(iOS)
     self.transition(isTrailing ? .swipe : .swipeReversed)
     #else
