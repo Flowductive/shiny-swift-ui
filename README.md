@@ -3,14 +3,12 @@
 <h2 align="center">SwiftUI extensions and components that just make sense.</h2>
 
 <p align="center">📦 Lightweight, Swift-y looking code for modern SwiftUI developers</p>
-<p align="center">⚙️ Dozens of view modifiers to add custom functionality</p>
+<p align="center">⚙️ Dozens of view modifiers to add expected functionality</p>
+<p align="center">💨 Custom, built-in transitions & animations for views</p>
+<p align="center">💻 Cross-platform Support for iOS, macOS, watchOS</p>
 <p align="center">🧩 Pre-made components that look great in any app</p>
-<p align="center">💨 Custom, built-in transitions, animations for views</p>
-<p align="center">💻 Cross-platform support on both iOS and macOS</p>
 
 ***
-
-⚠️ **Note:** This package is still under development and its contents are freely subject to change.
 
 💕 This package **works great with** and is inspired by [SwiftUIX](https://github.com/SwiftUIX/SwiftUIX)!
 
@@ -77,6 +75,7 @@ MyView().roundedBorder(.red, cornerRadius: 5.0, lineWidth: 2.0)
   - View frame modifiers [→](https://github.com/Flowductive/shiny-swift-ui#view-frame-modifiers)
   - View refresh modifier [→](https://github.com/Flowductive/shiny-swift-ui#view-refresh-modifier)
   - View styling modifiers [→](https://github.com/Flowductive/shiny-swift-ui#view-styling-modifiers)
+  - View timing modifiers [→](https://github.com/Flowductive/shiny-swift-ui#view-timing-modifiers)
   - Custom animation/transitions [→](https://github.com/Flowductive/shiny-swift-ui#custom-animationtransitions)
   - Debugging view modifier [→](https://github.com/Flowductive/shiny-swift-ui#debugging-view-modifier)
   - Screenshot view method [→](https://github.com/Flowductive/shiny-swift-ui#screenshot-view-method)
@@ -224,6 +223,24 @@ Add a rounded border to any view:
 ```swift
 MyViewA().roundedBorder(.green)
 MyViewB().roundedBorder(.red, cornerRadius: .s, lineWidth: 2.0)
+```
+
+### View timing modifiers
+
+Repeat an action in a specified interval:
+
+```swift
+MyView().every(3.0) {
+  print("Hello") // Runs every 3 seconds
+}
+```
+
+Perform an action after a specified delay:
+
+```swift
+MyView().after(3.0) {
+  print("Hello") // Runs 3 seconds after the view appears
+}
 ```
 
 ### Custom animation/transitions
