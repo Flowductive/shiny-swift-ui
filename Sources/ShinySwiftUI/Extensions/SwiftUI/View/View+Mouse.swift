@@ -22,6 +22,19 @@ public extension View {
   func trackingMouse(onMove: @escaping (NSPoint) -> Void) -> some View {
     TrackinAreaView(onMove: onMove) { self }
   }
+  
+  /**
+   Tracks the view.
+   
+   - parameter onMove: The handler for the mouse position updating.
+   */
+  func trackingMouseUnit(onMove: @escaping (UnitPoint) -> Void) -> some View {
+    GeometryReader { proxy in
+      TrackinAreaView(onMove: { point in
+        onMove(.init(x: point.x / proxy.size.width, y: point.y / proxy.size.height))
+      }) { self }
+    }
+  }
 }
 
 fileprivate struct TrackinAreaView<Content>: View where Content : View {

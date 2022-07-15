@@ -52,6 +52,7 @@ fileprivate struct TooltipView<Content, TooltipContent>: View where Content: Vie
       .overlay(
         tooltipContent
           .padding(.xs)
+          .padding(.horizontal, .xs)
           .background(background)
           .cornerRadius(.s)
           .innerRoundedBorder(Color.primary.opacity(0.2), cornerRadius: .s)
