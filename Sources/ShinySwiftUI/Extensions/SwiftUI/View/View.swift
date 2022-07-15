@@ -167,7 +167,11 @@ public extension View {
    */
   @ViewBuilder
   func slickAnimation() -> some View {
-    self.animation(.slickEaseOut)
+    if UserDefaults.standard.bool(forKey: "reduced_animations") {
+      self
+    } else {
+      self.animation(.slickEaseOut)
+    }
   }
   
   /**
@@ -179,7 +183,11 @@ public extension View {
    */
   @ViewBuilder
   func slickAnimation<T>(value: T, delay: Double = 0.0) -> some View where T: Equatable {
-    self.animation(.slickEaseOut.delay(delay), value: value)
+    if UserDefaults.standard.bool(forKey: "reduced_animations") {
+      self
+    } else {
+      self.animation(.slickEaseOut.delay(delay), value: value)
+    }
   }
   
   /**
