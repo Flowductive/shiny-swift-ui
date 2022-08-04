@@ -244,6 +244,23 @@ public extension View {
   }
   
   /**
+   A view with a reverse mask applied.
+   
+   - parameter alignment: The mask's alignment.
+   - parameter mask: The mask to apply.
+   */
+  @ViewBuilder
+  func reverseMask<Mask: View>(
+    alignment: Alignment = .center,
+    @ViewBuilder _ mask: () -> Mask
+  ) -> some View {
+    self.mask(
+      Rectangle()
+        .overlay(mask().blendMode(.destinationOut), alignment: alignment)
+    )
+  }
+  
+  /**
    A view with a disable effect that dims and shrinks the view.
    
    - parameter flag: Whether the effect should be applied.
