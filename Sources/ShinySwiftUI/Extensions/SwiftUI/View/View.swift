@@ -8,8 +8,8 @@
 import Foundation
 import SwiftUI
 
-infix operator /-
-infix operator /--
+infix operator /-: DefaultPrecedence
+infix operator /--: DefaultPrecedence
 
 @available(macOS 10.15, iOS 13.0, *)
 public extension View {
