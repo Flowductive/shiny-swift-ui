@@ -182,11 +182,11 @@ public extension View {
    - returns: An animated view.
    */
   @ViewBuilder
-  func slickAnimation<T>(value: T, delay: Double = 0.0) -> some View where T: Equatable {
+  func slickAnimation<T>(value: T, delay: Double = 0.0, duration: Double = 0.5) -> some View where T: Equatable {
     if UserDefaults.standard.bool(forKey: "reduced_animations") {
       self
     } else {
-      self.animation(.slickEaseOut.delay(delay), value: value)
+      self.animation(.slickEaseOut(duration: duration).delay(delay), value: value)
     }
   }
   
