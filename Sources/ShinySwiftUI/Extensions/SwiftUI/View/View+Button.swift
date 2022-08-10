@@ -50,7 +50,7 @@ public extension View {
     }
     return Group {
       if UserDefaults.standard.bool(forKey: ShinySwiftUI.shortcutTooltipDefaultsKey) {
-        HoverView(button: self.keyboardShortcut(shortcut), string: str, symbols: symbols)
+        _HoverView(button: self.keyboardShortcut(shortcut), string: str, symbols: symbols)
       } else {
         self.keyboardShortcut(shortcut)
       }
@@ -74,7 +74,7 @@ public extension View {
 
 @available(macOS 11.0, iOS 13.4, *)
 @available(watchOS, unavailable)
-private struct HoverView<T>: View where T: View {
+private struct _HoverView<T>: View where T: View {
   
   @State var hover: Bool = false
   
