@@ -51,6 +51,11 @@ public extension AnyTransition {
     AnyTransition.asymmetric(insertion: .scale, removal: .modifier(active: PopViewModifier(active: true), identity: PopViewModifier(active: false)))
   }
   
+  /// A float transition.
+  static var float: AnyTransition {
+    AnyTransition.asymmetric(insertion: .opacity.combined(with: .scale(scale: 0.9, anchor: .bottom)), removal: .opacity.combined(with: .scale(scale: 1.02)))
+  }
+  
   // MARK: - Public Static Methods
   
   /**
