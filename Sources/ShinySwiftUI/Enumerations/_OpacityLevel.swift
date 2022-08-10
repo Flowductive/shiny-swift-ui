@@ -27,6 +27,9 @@ public enum _OpacityLevel: CGFloat {
   /// Slightly opaque.
   case slight = 0.10
   
+  /// Very slightly opaque.
+  case verySlight = 0.03
+  
   /// Almost invisible.
   case almostInvisible = 0.00001
   
