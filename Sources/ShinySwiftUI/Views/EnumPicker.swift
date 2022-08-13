@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-public struct EnumPicker<T: Hashable & CaseIterable, V: View>: View {
+public struct EnumPicker<T: Hashable & CaseIterable & Equatable, V: View>: View {
   
   // MARK: - Public Properties
   
   /// The selected value.
-  public var selected: Binding<T>
+  @Binding public var selected: T
   
   /// The title of the picker.
-  public var title: String? = nil
+  public var title: String?
   
   /// The picker's content.
   public let mapping: (T) -> V
@@ -23,7 +23,7 @@ public struct EnumPicker<T: Hashable & CaseIterable, V: View>: View {
   // MARK: - Public Body View
   
   public var body: some View {
-    Picker(selection: selected, label: Text(title ?? "")) {
+    Picker(selection: $selected, label: Text(title ?? "")) {
       ForEach(Array(T.allCases), id: \.self) {
         mapping($0).tag($0)
       }
@@ -33,7 +33,7 @@ public struct EnumPicker<T: Hashable & CaseIterable, V: View>: View {
   // MARK: - Initalizers
   
   public init(selected: Binding<T>, title: String? = nil, mapping: @escaping (T) -> V) {
-    self.selected = selected
+    self._selected = selected
     self.title = title
     self.mapping = mapping
   }
