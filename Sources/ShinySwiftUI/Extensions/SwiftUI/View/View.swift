@@ -250,7 +250,7 @@ public extension View {
    - parameter mask: The mask to apply.
    */
   @ViewBuilder
-  func reverseMask<Mask: View>(
+  func inverseMask<Mask: View>(
     alignment: Alignment = .center,
     @ViewBuilder _ mask: () -> Mask
   ) -> some View {
