@@ -182,7 +182,7 @@ public extension View {
    - returns: An animated view.
    */
   @ViewBuilder
-  func slickAnimation<T>(value: T, delay: Double = 0.0, duration: Double = 0.5) -> some View where T: Equatable {
+  func slickAnimation<T>(_ style: _SlickAnimationStyle = .out, value: T, delay: Double = 0.0, duration: Double = 0.5) -> some View where T: Equatable {
     if UserDefaults.standard.bool(forKey: "reduced_animations") {
       self
     } else {

@@ -70,4 +70,13 @@ public extension Animation {
   static func slickEaseIn(duration: Double) -> Animation {
     Animation.timingCurve(0.75, 0.25, 0, 1, duration: duration)
   }
+  
+  /**
+   A slick ease in-out animation.
+   
+   - parameter duration: The duration of the animation.
+   */
+  static func slickEaseInOut(duration: Double) -> Animation {
+    Animation.timingCurve(0.85, 0, 0.15, 1, duration: duration)
+  }
 }
