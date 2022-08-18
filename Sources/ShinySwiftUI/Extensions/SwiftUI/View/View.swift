@@ -58,6 +58,17 @@ public extension View {
   }
   
   /**
+   Sets the frame to be at maximum a square size.
+   
+   - parameter length: The maximum side length of the frame.
+   - returns: The view, with a maximum square frame.
+   */
+  @ViewBuilder
+  func frame(max length: CGFloat) -> some View {
+    self.frame(maxWidth: length, maxHeight: length)
+  }
+  
+  /**
    Sets the max witdth to infinity, stretching the view horizontally.
    
    - returns: The view, with a max width of infinity.
