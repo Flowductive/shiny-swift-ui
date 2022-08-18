@@ -38,3 +38,12 @@ public struct EnumPicker<T: Hashable & CaseIterable & Equatable, V: View>: View 
     self.mapping = mapping
   }
 }
+
+public extension EnumPicker where T: RawRepresentable, V == Text {
+  
+  // MARK: - Initalizers
+  
+  init(selected: Binding<T>, title: String? = nil) {
+    self.init(selected: selected, title: title, mapping: { val in Text(String(describing: val.rawValue)) })
+  }
+}
