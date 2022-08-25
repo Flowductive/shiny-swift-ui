@@ -90,7 +90,7 @@ private struct _HoverView<T>: View where T: View {
         }
       HStack(spacing: .xs) {
         ForEach(symbols, id: \.self) { Image(systemName: $0) }
-        Text(string)
+        Text(string).id(string)
       }
       .imageScale(.small)
       .padding(.xs)

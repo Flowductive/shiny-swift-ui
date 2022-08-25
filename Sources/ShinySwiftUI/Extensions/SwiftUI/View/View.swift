@@ -358,6 +358,16 @@ public extension View {
   func debug() -> some View {
     background(Color.yellow.opacity(.quarter))
   }
+  
+  /**
+   Adds and removes padding around a view with `.drawingGroup()` applied.
+
+   - parameter padding: The padding spacing to apply. Use this to accomodate for offset, rotation, scaling, etc. used in your views.
+   */
+  @ViewBuilder
+  func paddedDrawingGroup(_ padding: CGFloat = .s) -> some View {
+    self.padding(padding).drawingGroup().padding(-1.0 * padding)
+  }
 }
 
 #if os(iOS)
