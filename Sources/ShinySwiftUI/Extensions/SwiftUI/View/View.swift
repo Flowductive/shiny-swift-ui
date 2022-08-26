@@ -308,9 +308,14 @@ public extension View {
    - parameter action: The action to perform.
    */
   func every(_ interval: TimeInterval, perform action: @escaping () -> Void) -> some View {
-    self.onReceive(Timer.publish(every: interval, on: .main, in: .common).autoconnect()) { _ in
-      action()
-    }
+    let timer = Timer.publish(every: interval, on: .main, in: .common).autoconnect()
+    return self
+      .onReceive(timer) { _ in
+        action()
+      }
+      .onDisappear {
+        timer.upstream.connect().cancel()
+      }
   }
   
   /**
