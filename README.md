@@ -40,9 +40,11 @@ ViewA() + ViewB()
 ```swift
 // 😴 Before
 MyView().frame(width: 30.0, height: 30.0)
+MyView().frame(maxWidth: 40.0, maxHeight: 40.0)
 
 // ✨ After
 MyView().frame(30.0)
+MyView().frame(max: 40.0)
 ```
 
 ```swift
