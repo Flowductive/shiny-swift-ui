@@ -36,6 +36,16 @@ public extension AnyTransition {
     AnyTransition.modifier(active: SwipeViewModifier(.right, active: true), identity: SwipeViewModifier(.right, active: false))
   }
   
+  /// A left swipe transition.
+  static var swipeUp: AnyTransition {
+    AnyTransition.modifier(active: SwipeViewModifier(.left, active: true), identity: SwipeViewModifier(.up, active: false))
+  }
+  
+  /// A right swipe transition.
+  static var swipeDown: AnyTransition {
+    AnyTransition.modifier(active: SwipeViewModifier(.right, active: true), identity: SwipeViewModifier(.down, active: false))
+  }
+  
   /// A page-wide transition for swiping.
   static var swipe: AnyTransition {
     AnyTransition.asymmetric(insertion: swipeRight, removal: swipeLeft)
@@ -93,11 +103,27 @@ fileprivate struct SwipeViewModifier: ViewModifier {
   func body(content: Content) -> some View {
     content
       .opacity(active ? .invisible : .opaque)
-      .offset(x: active ? direction == .right ? 200.0 : -200.0 : 0.0)
+      .offset(x: active ? direction.x : 0.0, y: active ? direction.y : 0.0)
   }
   
   enum Direction {
-    case left, right
+    case left, right, up, down
+    
+    var x: CGFloat {
+      switch self {
+      case .right: return 200
+      case .left: return -200
+      default: return 0
+      }
+    }
+    
+    var y: CGFloat {
+      switch self {
+      case .up: return 200
+      case .down: return -200
+      default: return 0
+      }
+    }
   }
 }
 
