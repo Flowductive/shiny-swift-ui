@@ -38,12 +38,12 @@ public extension AnyTransition {
   
   /// A left swipe transition.
   static var swipeUp: AnyTransition {
-    AnyTransition.modifier(active: SwipeViewModifier(.left, active: true), identity: SwipeViewModifier(.up, active: false))
+    AnyTransition.modifier(active: SwipeViewModifier(.up, active: true), identity: SwipeViewModifier(.up, active: false))
   }
   
   /// A right swipe transition.
   static var swipeDown: AnyTransition {
-    AnyTransition.modifier(active: SwipeViewModifier(.right, active: true), identity: SwipeViewModifier(.down, active: false))
+    AnyTransition.modifier(active: SwipeViewModifier(.down, active: true), identity: SwipeViewModifier(.down, active: false))
   }
   
   /// A page-wide transition for swiping.
