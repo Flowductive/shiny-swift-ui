@@ -54,7 +54,9 @@ MyView().onAppear {
 }
 
 // ✨ After
-MyView().hideKeyboard()
+MyView().onAppear {
+  hideKeyboard()
+}
 ```
 
 ```swift
